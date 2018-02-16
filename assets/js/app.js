@@ -2,8 +2,8 @@
 function skycons() {
   var i,
     icons = new Skycons({
-      "color" : "#000000",
-      "resizeClear": true // nasty android hack
+      "color" : "pink",
+      'resizeClear': true
     }),
     list  = [ // listing of all possible icons
       "clear-day",
@@ -32,9 +32,6 @@ function skycons() {
   icons.play();
 }
 
-
-
-
 let latitude = '';
 let longitude = '';
 
@@ -50,23 +47,31 @@ function getLocation() {
       .then(function(response) {
         return response.json();
       })
-
+      
       .then(function(data) {
         console.log(data);
 
           //Let's make some HTML!
-        let html = `<h3 class="text-center">${data.timezone}</h3>
-        <div class="text-center"><canvas class="${data.currently.icon}"></canvas></div>
+        let html = `<h3 class="title text-center">${data.timezone}</h3>
+        <figure class="text-center"><canvas class="${data.currently.icon}"></canvas></figure>
         <p class="text-center">${data.currently.temperature} °C</p>
         <p class="text-center">${data.currently.summary}</p>
         <p class="text-center">Índice UV: ${data.currently.uvIndex}</p>
-        <p class="text-center">Humedad: ${data.currently.humidity}</p>`;
+        <p class="humidity text-center">Humedad: ${data.currently.humidity}</p>
+        `;
 
         //Put that HTML on the page
         content.innerHTML = html;
+        skycons();
+
+        let contentBtn  = document.querySelector('.content-button');
+
+        let htmlBtn = `<button>Ver Semana</button>`;
+
+        contentBtn.innerHTML = htmlBtn;
       })
       .catch(function(error) {
-
+        alert("No es posible entregar la información")
       });
 
     }) 
