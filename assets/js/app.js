@@ -1,8 +1,8 @@
-/*//Función para mostrar ícono
+//Función para mostrar ícono
 function skycons() {
   var i,
     icons = new Skycons({
-      "color" : "#FFFFFF",
+      "color" : "#000000",
       "resizeClear": true // nasty android hack
     }),
     list  = [ // listing of all possible icons
@@ -30,7 +30,7 @@ function skycons() {
   }
   // animate the icons
   icons.play();
-}*/
+}
 
 
 
@@ -55,12 +55,12 @@ function getLocation() {
         console.log(data);
 
           //Let's make some HTML!
-        let html = `<h1>${data.timezone}</h1>
-        <div><canvas class=${data.currently.icon}></canvas></div>
-        <p>${data.currently.temperature} °C</p>
-        <p>${data.currently.summary}</p>
-        <p>Índice UV: ${data.currently.uvIndex}</p>
-        <p>Humedad: ${data.currently.humidity}</p>`;
+        let html = `<h3 class="text-center">${data.timezone}</h3>
+        <div class="text-center"><canvas class="${data.currently.icon}"></canvas></div>
+        <p class="text-center">${data.currently.temperature} °C</p>
+        <p class="text-center">${data.currently.summary}</p>
+        <p class="text-center">Índice UV: ${data.currently.uvIndex}</p>
+        <p class="text-center">Humedad: ${data.currently.humidity}</p>`;
 
         //Put that HTML on the page
         content.innerHTML = html;
